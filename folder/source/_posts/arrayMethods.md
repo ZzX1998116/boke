@@ -1,7 +1,7 @@
 ---
 title: ES6数组方法
 date: 2022-10-09 09:34:51
-cover: universe,Space
+cover: 女
 tags: [数组,ES6]
 ---
 这里的是es6新增的数组扩展,很多不常用的整理一下方便查找
