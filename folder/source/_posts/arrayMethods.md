@@ -387,3 +387,81 @@ console.log(entries.next().value); // [0, 'a']
 console.log(entries.next().value); // [1, 'b']
 console.log(entries.next().value); // [2, 'c']
 {% endcodeblock %}
+### 8.实例方法:includes()
+Array.prototype.includes方法返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似。ES2016 引入了该方法。
+{% codeblock lang:objc %}
+[1, 2, 3].includes(2)     // true
+[1, 2, 3].includes(4)     // false
+[1, 2, NaN].includes(NaN) // true
+{% endcodeblock %}
+该方法的第二个参数表示搜索的起始位置 ，默认为0.如果第二个参数为负值,则表示倒数的位置,如果这时它大于数组长度(比如第二个参数为-4,但数组长度为3),则会重置为从0开始。
+{% codeblock lang:objc %}
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+{% endcodeblock %}
+没有该方法之前,我们通常使用数组的indexOf方法,检查是否包含某个值。
+{% codeblock lang:objc %}
+if (arr.indexOf(el) !== -1) {
+  // ...
+}
+{% endcodeblock %}
+indexOf方法有两个缺点,一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于-1，表达起来不够直观。二是，它内部使用严格相等运算符(===)进行判断，这会导致对NaN的误判。
+{% codeblock lang:objc %}
+[NaN].indexOf(NaN)  // -1
+{% endcodeblock %}
+includes使用的是不一样的判断算法,就没有这个问题。
+{% codeblock lang:objc %}
+[NaN].includes(NaN)  //true
+{% endcodeblock %}
+下面代码用来检查当前环境是否支持该方法，如果不支持，部署一个简易的替代版本。
+{% codeblock lang:objc %}
+const contains = (() =>
+  Array.prototype.includes
+    ? (arr, value) => arr.includes(value)
+    : (arr, value) => arr.some(el => el === value)
+)();
+contains(['foo', 'bar'], 'baz'); // => false
+{% endcodeblock %}
+另外，Map和Set数据结构有一个has方法，需要注意与includes区分。
+Map 结构的has方法，是用来查找键名的，比如Map.prototype.has(key)、WeakMap.prototype.has(key)、Reflect.has(target, propertyKey)。
+Set 结构的has方法，是用来查找值的，比如Set.prototype.has(value)、WeakSet.prototype.has(value)。
+### 9.实例方法:flat(),flatMap()
+数组的成员有时还是数组，Array.prototype.flat()用于将嵌套的数组“拉平”，变成一维的数组。该方法返回一个新数组，对原数组没有影响。
+{% codeblock lang:objc %}
+[1,2,[3,4]].flat()  //[1,2,3,4]
+{% endcodeblock %} 
+上面代码自己中，原数组的成员里面有一个数组，flat()方法将子组件的成员取出来，添加在原来的位置。
+flat()默认只会“拉平”一层，如果想要“拉平”多层的嵌套数组，可以将flat()方法的参数写成一个整数，表示想要拉平的层数，默认为1。
+{% codeblock lang:objc %}
+[1,2,[3,[4,5]]].flat()    //[1,2,3,[4,5]]
+[1,2,[3,[4,5]]].flat(2)   //[1,2,3,4,5]
+{% endcodeblock %}
+上面代码中，flat()的参数为2，表示要“拉平”两层的嵌套数组。
+如果不管有多少层嵌套，都要转成一维数组，可以用Infinity关键字作为参数。
+{% codeblock lang:objc %}
+[1,[2,[3]]].flat(Infinity)  //[1,2,3]
+{% endcodeblock %}
+如果原数组有空位，flat()方法会跳过空位。
+{% codeblock lang:objc %}
+[1,2, ,4,5].flat()          //[1,2,4,5]
+{% endcodeblock %}
+flatMap()方法对原数组的每个成员执行一个函数(相当于执行Array.prototype.map()),然后对返回值组成的数组执行flat()方法。该方法返回一个新数组，不改变原数组
+{% codeblock lang:objc %}
+//相当于[[2,40],[3,6],[4,8]].flat()
+[2,3,4].flatMap((x)=>[x,x*2])  //[2,4,3,6,4,8]
+{% endcodeblock %}
+flatMap()只能展开一层数组。
+{% codeblock lang:objc %}
+//相当于[[[2]],[[4]]，[[6]],[[8]]].flat()
+[1,2,3,4].flatMap(x=>[[x*2]])   //[[2],[4],[6],[8]]
+{% endcodeblock %}
+上面代码中，遍历函数返回的是一个双层的数组，但是默认只能展开一层，因此flatMap()返回的还是一个嵌套数组。
+flatMap()方法的参数是一个遍历函数，该函数可以接受三个参数，分别是当前数组成员，当前数组成员位置(从零开始),原数组。
+{% codeblock lang:objc %}
+arr.flatMap(function callback(currentValue[,index[,array]]){
+  // ...
+}[,thisArg])
+{% endcodeblock %}
+flatMap()方法还可以有第二个参数，用来绑定遍历函数里面的this。
+### 10.实例方法:at()
+长久以来，JavaScript不支持数组的负索引，如果要引用数组的最后一个成员，不能写成arr[-1]，只能使用arr[arr.length - 1]。
