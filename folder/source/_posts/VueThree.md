@@ -40,6 +40,24 @@ createApp(App).mount('#app') = createApp(根组件).mount('public/index.html中�
   {% endcodeblock %}
 ##### 4.生命周期
  {% image ./smzq.png vue3生命周期 download:./smzq.png fancybox:true %}
+vue3 中的生命周期函数, 需要在 setup 中调用
+{% codeblock lang:objc %}
+import { onMounted, onUpdated,onUnmounted } from 'vue'
+
+const MyComponent = {
+  setup() {
+    onMounted(() => {
+      console.log('mounted!')
+    })
+    onUpdated(() => {
+      console.log('updated!')
+    })
+    onUnmounted(() => {
+      console.log('unmounted!')
+    })
+  }
+}
+{% endcodeblock %}
 ##### 5.获取props
 {% codeblock lang:objc %}
 vue2：console.log(‘props’,this.xxx)
