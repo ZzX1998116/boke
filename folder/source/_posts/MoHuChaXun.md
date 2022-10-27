@@ -1,10 +1,12 @@
 ---
 title: js原生实现表格模糊查询.....
 date: 2022-10-13 15:40:00
-cover: Anime,girl
+cover: ./uncategorized/MoHuChaXun/5.jpg
+cover_info:
+  meta: js原生实现表格模糊查询.....
+  title: 遇到的一个功能总结一下，因为是原生的写法不常用，怕自己忘记在这里总结一下。有很多方法我用的是test
 tags: [js,表格]
 ---
-遇到的一个功能总结一下，因为是原生的写法不常用，怕自己忘记在这里总结一下。有很多方法我用的是test
 ps:因为不想整理,搬运自[大佬](https://blog.csdn.net/weixin_43867847?type=blog)的文章
 <!-- more -->
 ## test

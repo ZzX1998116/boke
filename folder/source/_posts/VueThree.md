@@ -1,10 +1,12 @@
 ---
 title: Vue3学习之路
-date: 2022-10-25 17：10
-cover: 肚兜
+date: 2022-10-25 17:10:00
+cover: ./uncategorized/VueThree/2.jpg
+cover_info:
+  meta: Vue3学习之路
+  title: 学习点最新的东西丰富下自己.....好吧，其实是没事干！！！！！
 tags: [vue,扩展,最新]
 ---
-学习点最新的东西丰富下自己.....好吧，其实是没事干！！！！！
 <!-- more -->
 ### 前言
  #### vue2 => vue3

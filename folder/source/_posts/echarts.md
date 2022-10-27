@@ -1,10 +1,12 @@
 ---
 title: ECharts学习之路.....
 date: 2022-10-13 15:40:00
-cover: girl 
+cover: ./uncategorized/echarts/3.jpg
+cover_info:
+  meta: ECharts学习之路.....
+  title: ps:反正就是把所有标签的属性都整理记录一下，我记忆力差没办法记住那么多，用的时候对照着改就行了。好想摆烂啊！！！！
 tags: [图表,ECharts]
 ---
-ps:反正就是把所有标签的属性都整理记录一下，我记忆力差没办法记住那么多，用的时候对照着改就行了。好想摆烂啊！！！！
 <!-- more -->
 ## option
 ### 参数
