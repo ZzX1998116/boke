@@ -109,3 +109,7 @@ deploy:
 search:
   path: search.xml
   field: post
+
+
+  # https://github.com/highlightjs/highlight.js/issues/2877
+  # https://github.com/highlightjs/highlight.js/blob/master/VERSION_10_UPGRADE.md   
