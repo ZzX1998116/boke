@@ -10,6 +10,8 @@ keywords:
 author: Z&M
 language: zh-CN
 timezone: 'Asia/Shanghai'
+# favicon: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2Ffe%2F11%2F97%2Ffe119792285b42e687ebf4367f77c8de.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1670552531&t=7b0d4b32c93da846eb96f296f4770223
+favicon: /images/headerIcon.jpg
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -29,6 +31,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - "HTML/**"
 
 # Writing
 new_post_name: :title.md # File name of new posts

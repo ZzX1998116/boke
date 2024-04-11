@@ -4,7 +4,8 @@ date:
 ---
 {% timeline %}
 <!-- node ### 认知 -->
-一个不会ps的程序员不是个好程序员，就像
+一个不会ps的程序员不是个好UI，一个不会摄影的程序员不是个好摄影师...
+慢慢进步总比原地踏步要好很多
 <!-- node ### 财富 -->
 #### 图片
 {% link https://wallhaven.cc WallHaven 文章封面图片来源 icon:https://wallhaven.cc/favicon.ico %}
@@ -12,4 +13,3 @@ date:
 {% link https://www.remove.bg removbg 图片背景消除(可能和ps自带的不分伯仲) icon:https://www.remove.bg/favicon-16x16.png?v=YAXaAv7pao %}
 {% link https://tinify.cn TinyPNG WebP、PNG和JPEG图片压缩 icon:https://tinify.cn/images/apple-touch-icon.png %}
 {% endtimeline %}
-
