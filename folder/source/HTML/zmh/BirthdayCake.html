@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>妹妹生日快乐</title>
 </head>
+<!-- 生日原样式 css-->
 <style>
 
 body {
@@ -513,7 +512,18 @@ a.lk2:hover {
     transition: all 0.8s;
 }
 </style>
+<!-- 计时器 css-->
+<style>
+.title {background-color:#fff; text-align:center; width:100%; position:fixed; top:0; left:0; padding:5px 0; z-index:99999;}
+.title a {color:#FFF; text-decoration:none; font-size:16px; font-weight:bolder; line-height:24px;}
+#wrapper {width:100%; margin:54px auto;display: flex;align-items: center;justify-content: center;}
+.autosize {font-size:0; background: #fff; display: table;}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"> </script> 
+  
+<script src="https://cdn.bootcss.com/d3-transform/1.0.4/d3-transform.js"></script>
+  <!-- 生日原样式 js -->
   <script>
     $(function () {
       setTimeout(function () {
@@ -546,7 +556,230 @@ a.lk2:hover {
       // window.audio=$('audio')[0].play();
   })
   </script>
-  <script src="https://cdn.bootcss.com/d3-transform/1.0.4/d3-transform.js"></script>
+  <!-- 计时器 js-->
+  <script>
+//   计算年龄
+  function calculateAge(birthYear, birthMonth ,birthDay,type) {
+  // 获取当前时间的年月日
+  var now = new Date();
+  var nowYear = now.getFullYear();
+  var nowMonth = now.getMonth(); // 注意：getMonth() 返回的是0-11的值
+  var nowDay = now.getDate();
+  var State = ''; 
+  // 获取出生日期的年月日
+  var birthDate = new Date(birthYear, birthMonth - 1, birthDay); // 注意：月份是从0开始的
+ 
+  var age = nowYear - birthYear;
+ 
+  // 如果出生月份大于当前月份，或者出生月份等于当前月份同时出生日期大于当前日期，则年龄减一
+  if (birthMonth - 1 > nowMonth || (birthMonth - 1 === nowMonth && birthDay > nowDay)) {
+    age--;
+    State = '未来'; //false
+  }else if(birthMonth - 1 === nowMonth && birthDay == nowDay) {
+    State = '当天'
+  }else{
+    State = '过去'; //true
+  }
+
+  if(type == 'AGE'){
+  return age;
+  }else if(type == 'IF'){
+  return State;
+  }
+}
+
+// 行走的时间
+  var uLED = function (conf) {
+    var r, led, timer, new_date, 
+    font1 = [" 000    0    000   000     0  00000   00  00000  000   000             ", "0   0  00   0   0 0   0   00  0      0        0 0   0 0   0            ", "0   0   0       0     0  0 0  0     0         0 0   0 0   0   0        ", "0   0   0    000   000  0  0  0000  0000     0   000   0000            ", "0   0   0   0         0 00000     0 0   0   0   0   0     0            ", "0   0   0   0     0   0    0  0   0 0   0  0    0   0    0    0        ", " 000   000  00000  000     0   000   000  0      000   00              "],
+    font2 = [" 000    0    000  00000    0  00000   00  00000  000   000             ", "0   0  00   0   0    0    00  0      0        0 0   0 0   0            ", "0  00   0       0   0    0 0  0000  0        0  0   0 0   0   0        ", "0 0 0   0     00     0  0  0      0 0000    0    000   0000            ", "00  0   0    0        0 00000     0 0   0   0   0   0     0            ", "0   0   0   0     0   0    0  0   0 0   0   0   0   0    0    0        ", " 000   000  00000  000     0   000   000    0    000   00              "],
+    font3 = ["00000     0 00000 00000 0   0 00000 00000 00000 00000 00000            ", "0   0     0     0     0 0   0 0     0         0 0   0 0   0   0        ", "0   0     0     0     0 0   0 0     0         0 0   0 0   0            ", "0   0     0 00000 00000 00000 00000 00000     0 00000 00000            ", "0   0     0 0         0     0     0 0   0     0 0   0     0            ", "0   0     0 0         0     0     0 0   0     0 0   0     0   0        ", "00000     0 00000 00000     0 00000 00000     0 00000 00000            "],
+    h_w = 5, m_d = 50, m_h = 50, m_m = 50, m_s = 50, time_rem, razd, dig = [], d, i, start, rand_num, num;
+    var type = conf.type == undefined ? "time" : conf.type, format, color = "#000", bgcolor = "#000", rounded = conf.rounded == undefined ? 1 : conf.rounded, pix_between = 1, hourformat = conf.hourformat == undefined ? 24 : conf.hourformat, n_length = conf.length == undefined ? 8 : conf.length;
+    if (conf.size < 30) {
+        h_w = conf.size;
+    }
+    else {
+        h_w = 12;
+    }
+    if (conf.color == "#ffb8b8") {
+        color = conf.color;
+        led = font1;
+        format = "ddd:hh:mm:ss";
+    }
+    else if (conf.color == "#af0") {
+        color = conf.color;
+        led = font1;
+    }
+    else if (conf.color == "#f0a") {
+        color = conf.color;
+        led = font2;
+        format = "hh:mm";
+    }
+    else if (conf.color == "#fa0") {
+        color = conf.color;
+        led = font3;
+        format = "hh:mm:ss";
+    }
+    if (conf.bgcolor == "#fff") {
+        bgcolor = conf.bgcolor;
+    }
+    else if (conf.bgcolor == "#101a10") {
+        bgcolor = conf.bgcolor;
+    }
+    else if (conf.bgcolor == "#222") {
+        bgcolor = conf.bgcolor;
+    }
+    function mtimer(timer, m) {
+        var n_t = timer.split(":");
+        for (var i = 0; i < n_t.length; i++) {
+            n_t[i] = parseInt(n_t[i], 10);
+        }
+        // n_t[0] = new Date().getFullYear();
+        return n_t;
+    }
+    start = new Date();
+    if (type == "random") {
+        r = Raphael(conf.id, n_length * 6 * (h_w + pix_between) - (h_w + 2 * pix_between), 7 * (h_w + pix_between) - pix_between);
+        for (i = 0; i < n_length * 6; i++) {
+            dig[i] = [];
+            for (var y = 0; y < 7; y++) {
+                dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
+                    "fill": bgcolor,
+                    "stroke": null
+                })
+            }
+        }
+        updateTime();
+    }
+    else {
+        r = Raphael(conf.id, format.length * 6 * (h_w + pix_between) - (h_w + 2 * pix_between), 7 * (h_w + pix_between) - pix_between)
+    }
+    if (type == "countdown") {
+        // n_t = mtimer(start.getFullYear() + 1 + ":1:1:0:0:00");
+        // if()
+        const stateval = calculateAge(2005,5,1,'IF');
+        let nowYear = '';
+        if(stateval == '过去'){  //true代表已经过去生日
+          nowYear = start.getFullYear() + 1;
+        }else if(stateval == '未来'){
+          nowYear = start.getFullYear();
+        }
+        n_t = mtimer(nowYear + ":5:1:0:0:00");
+        new_date = new Date(n_t[0], n_t[1] - 1, n_t[2], n_t[3], n_t[4]);
+        for (i = 0; i < 12 * 6; i++) {
+            dig[i] = [];
+            for (var y = 0; y < 7; y++) {
+                dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
+                    "fill": bgcolor,
+                    "stroke": null
+                })
+            }
+        }
+        updateTime();
+    }
+    if (type == "time") {
+        for (i = 0; i < ((format == "mm:ss" || format == "hh:mm") ? 5 : ((format == "hh" || format == "mm" || format == "ss") ? 2 : 8)) * 6; i++) {
+            dig[i] = [];
+            for (var y = 0; y < 7; y++) {
+                dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
+                    "fill": bgcolor,
+                    "stroke": null
+                })
+            }
+        }
+        updateTime();
+    }
+    function updateTime() {
+        d = new Date();
+        type == "countdown" ? updateLed1(d) : "";
+        type == "time" ? updateLed2(d) : "";
+        if (type == "random") {
+            updateLed0();
+            setTimeout(updateTime, 5000);
+        }
+        else {
+            setTimeout(updateTime, 1000);
+        }
+    }
+    function updateLed0() {
+        rand_num = ("0,9999999").split(",");
+        num = "" + parseInt(parseInt(rand_num[0]) + Math.random() * (parseInt(rand_num[1]) - parseInt(rand_num[0])));
+        while (String(num).length < n_length) {
+            num = "0" + num;
+        }
+        dig_to_led(num);
+    }
+    function updateLed1(d) {
+        time_rem = parseInt((new_date.getTime() - d.getTime()) / 1000) + 1;
+        m_d = parseInt(time_rem / 86400);
+        m_h = parseInt((time_rem - m_d * 86400) / 3600);
+        m_m = parseInt((time_rem - m_d * 86400 - m_h * 3600) / 60);
+        m_s = parseInt(time_rem - m_d * 86400 - m_h * 3600 - m_m * 60);
+        num = (m_d < 10 ? "00" : (m_d > 100 ? "" : "0")) + m_d + ":" + (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
+        if ((new_date.getTime() - d.getTime()) >= 0) {
+            dig_to_led(num);
+        }
+        else {
+            dig_to_led("000:00:00:00");
+        }
+    }
+    var flash_dot = true;
+
+    function updateLed2(d) {
+        m_h = parseInt(d.getHours());
+        m_h = (hourformat == 12 ? (m_h > 12 ? m_h - 12 : m_h) : m_h);
+        m_m = parseInt(d.getMinutes());
+        m_s = parseInt(d.getSeconds());
+        if (format == "mm:ss") {
+            num = (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
+        }
+        else if (format == "hh:mm") {
+            if (flash_dot) {
+                num = (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m;
+            }
+            else {
+                num = (m_h < 10 ? "0" : "") + m_h + " " + (m_m < 10 ? "0" : "") + m_m;
+            }
+            flash_dot = !flash_dot;
+        }
+        else if (format == "hh") {
+            num = (m_h < 10 ? "0" : "") + m_h;
+        }
+        else if (format == "mm") {
+            num = (m_m < 10 ? "0" : "") + m_m;
+        }
+        else if (format == "ss") {
+            num = (m_s < 10 ? "0" : "") + m_s;
+        }
+        else {
+            num = (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s
+        }
+        dig_to_led(num);
+    }
+    function dig_to_led(num) {
+        start = new Date();
+        razd = 0;
+        for (var l = 0; l < num.length; l++) {
+            num.charAt(l) == ":" ? razd = 10 : (num.charAt(l) == " " ? razd = 11 : razd = num.charAt(l));
+            for (i = 0; i < 6; i++) {
+                for (var y = 0; y < 7; y++) {
+                    if (led[y].charAt(razd * 6 + i) == "0" && dig[l * 6 + i][y].attrs.fill == bgcolor) {
+                        dig[l * 6 + i][y].animate({
+                            "fill": color
+                        }, 300);
+                    }
+                    else if (led[y].charAt(razd * 6 + i) == " " && dig[l * 6 + i][y].attrs.fill != bgcolor) {
+                        dig[l * 6 + i][y].animate({
+                            "fill": bgcolor
+                        }, 300);
+                    }
+                }
+            }
+        }
+    }
+};
+  </script>
 <body>
 
 <div class="bg">
@@ -727,6 +960,53 @@ a.lk2:hover {
         </div>
 	</a>
 </div> -->
+<!-- 计时器 -->
+<div class="Time">
+<div id="wrapper">
+    <div id="Noday">
+    <h2 style="color: #fff;">距离你的<span id="timeh2" style="color: #C5B4E5;font-size: 42px;font-weight: bold;"></span>岁生日还有：</h2>
+        <div style="display: flex;align-items: center;justify-content: center;">
+          <div id="led0" class="autosize" style="border: 10px solid #fff; border-radius: 20px;"></div>
+        </div>
+      </div>
+      <div id="Yesday" style="display: none;">
+      <h2 style="color: #fff;">今天是你的生日，玩的开心！</h2>
+      </div>
+</div>
+</div>
+          <script type="text/javascript">
+            var comSize = 0;
+            var uaWidth = window.innerWidth;
+            const Yage = calculateAge(2005,5,1,'AGE');
+            const Stateval = calculateAge(2005,5,1,'IF');
+            var YesH2 = document.getElementById("Yesday");
+            var NoH2 = document.getElementById("Noday");
+            var titleTime = document.getElementById("timeh2");
+            if(Stateval == '当天'){
+              YesH2.style.display = 'block'
+              NoH2.style.display = 'none'
+            }else{
+              YesH2.style.display = 'none'
+              NoH2.style.display = 'block'
+            }
+            titleTime.innerHTML = Yage
+            if(uaWidth > 480){
+              comSize = 5;
+            }else{
+              comSize = 2;
+            }
+            $(document).ready(function() {
+                var l0 = new uLED({
+                    id : "led0",
+                    type : "countdown",
+                    format : "ddd:hh:mm:ss",
+                    color : "#ffb8b8",
+                    bgcolor : "#fff",
+                    size : comSize,
+                    rounded : 1,
+                });
+            });
+        </script> 
 <ul class="bg-bubbles">
     <li>
         <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
