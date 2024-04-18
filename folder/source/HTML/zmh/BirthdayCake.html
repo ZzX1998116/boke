@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -7,793 +8,851 @@
 </head>
 <!-- 生日原样式 css-->
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: '楷体';
+    }
 
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: '楷体';
-}
+    html,
+    body {
+        height: 100%;
+    }
 
-html, body {
-    height: 100%;
-}
+    #cake {
+        display: block;
+        position: relative;
+        left: 50%;
+        margin-top: -10em;
+        margin-bottom: 0;
+        margin-left: -100px;
+        z-index: 100;
 
-#cake {
-    display: block;
-    position: relative;
-    left:50%;
-    margin-top: -10em;
-    margin-bottom: 0;
-    margin-left: -100px;
-	z-index: 100;
+    }
 
-}
-
-/* ============================================== Candle
+    /* ============================================== Candle
 */
-.bg {
-    width: 100%;
-    height: 100%;
-    background: #ee9ca7;
-    background: -webkit-linear-gradient(top left, #ee9ca7 0%, #ee9ca7 100%);
-    background: linear-gradient(to bottom right, #ee9ca7 0%, #ee9ca7 100%);
-}
+    .bg {
+        width: 100%;
+        height: 100%;
+        background: #ee9ca7;
+        background: -webkit-linear-gradient(top left, #ee9ca7 0%, #ee9ca7 100%);
+        background: linear-gradient(to bottom right, #ee9ca7 0%, #ee9ca7 100%);
+    }
 
-.velas {
-    background: #ffffff;
-    border-radius: 10px;
-    position: relative;
-    top: 247px;
-    margin-left: 49.5%;
-    width: 5px;
-    height: 35px;
-    -webkit-transform: translateY(-300px);
-    -ms-transform: translateY(-300px);
-    transform: translateY(-300px);
-    -webkit-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-animation: in 500ms 6s ease-out forwards;
-    animation: in 500ms 6s ease-out forwards;
-}
+    .velas {
+        background: #ffffff;
+        border-radius: 10px;
+        position: relative;
+        top: 247px;
+        margin-left: 49.5%;
+        width: 5px;
+        height: 35px;
+        -webkit-transform: translateY(-300px);
+        -ms-transform: translateY(-300px);
+        transform: translateY(-300px);
+        -webkit-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-animation: in 500ms 6s ease-out forwards;
+        animation: in 500ms 6s ease-out forwards;
+    }
 
-.velas:after,
-.velas:before {
-    background: rgba(255, 0, 0, 0.4);
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2.22222222px;
-}
+    .velas:after,
+    .velas:before {
+        background: rgba(255, 0, 0, 0.4);
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2.22222222px;
+    }
 
-.velas:after {
-    top: 25%;
-    left: 0;
-}
+    .velas:after {
+        top: 25%;
+        left: 0;
+    }
 
-.velas:before {
-    top: 45%;
-    left: 0;
-}
+    .velas:before {
+        top: 45%;
+        left: 0;
+    }
 
-/* ============================================== Fire
+    /* ============================================== Fire
 */
-.fuego {
-    border-radius: 100%;
-    position: absolute;
-    top: -20px;
-    left: 70%;
-    margin-left: -2.2px;
-    width: 6.66666667px;
-    height: 18px;
-}
+    .fuego {
+        border-radius: 100%;
+        position: absolute;
+        top: -20px;
+        left: 70%;
+        margin-left: -2.2px;
+        width: 6.66666667px;
+        height: 18px;
+    }
 
-.fuego:nth-child(1) {
-    -webkit-animation: fuego 2s 6.5s infinite;
-    animation: fuego 2s 6.5s infinite;
-}
+    .fuego:nth-child(1) {
+        -webkit-animation: fuego 2s 6.5s infinite;
+        animation: fuego 2s 6.5s infinite;
+    }
 
-.fuego:nth-child(2) {
-    -webkit-animation: fuego 1.5s 6.5s infinite;
-    animation: fuego 1.5s 6.5s infinite;
-}
+    .fuego:nth-child(2) {
+        -webkit-animation: fuego 1.5s 6.5s infinite;
+        animation: fuego 1.5s 6.5s infinite;
+    }
 
-.fuego:nth-child(3) {
-    -webkit-animation: fuego 1s 6.5s infinite;
-    animation: fuego 1s 6.5s infinite;
-}
+    .fuego:nth-child(3) {
+        -webkit-animation: fuego 1s 6.5s infinite;
+        animation: fuego 1s 6.5s infinite;
+    }
 
-.fuego:nth-child(4) {
-    -webkit-animation: fuego 0.5s 6.5s infinite;
-    animation: fuego 0.5s 6.5s infinite;
-}
+    .fuego:nth-child(4) {
+        -webkit-animation: fuego 0.5s 6.5s infinite;
+        animation: fuego 0.5s 6.5s infinite;
+    }
 
-.fuego:nth-child(5) {
-    -webkit-animation: fuego 0.2s 6.5s infinite;
-    animation: fuego 0.2s 6.5s infinite;
-}
+    .fuego:nth-child(5) {
+        -webkit-animation: fuego 0.2s 6.5s infinite;
+        animation: fuego 0.2s 6.5s infinite;
+    }
 
-/* ============================================== Animation Fire
+    /* ============================================== Animation Fire
 */
-@-webkit-keyframes fuego {
-    0%, 100% {
-        background: rgba(254, 248, 97, 0.5);
-        -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(0) scale(1);
-        transform: translateY(0) scale(1);
+    @-webkit-keyframes fuego {
+
+        0%,
+        100% {
+            background: rgba(254, 248, 97, 0.5);
+            -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+            box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+            -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+        }
+
+        50% {
+            background: rgba(255, 50, 0, 0.1);
+            -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+            box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+            -webkit-transform: translateY(-20px) scale(0);
+            transform: translateY(-20px) scale(0);
+        }
     }
 
-    50% {
-        background: rgba(255, 50, 0, 0.1);
-        -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(-20px) scale(0);
-        transform: translateY(-20px) scale(0);
-    }
-}
+    @keyframes fuego {
 
-@keyframes fuego {
-    0%, 100% {
-        background: rgba(254, 248, 97, 0.5);
-        -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(0) scale(1);
-        transform: translateY(0) scale(1);
+        0%,
+        100% {
+            background: rgba(254, 248, 97, 0.5);
+            -webkit-box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+            box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+            -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+        }
+
+        50% {
+            background: rgba(255, 50, 0, 0.1);
+            -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+            box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+            -webkit-transform: translateY(-20px) scale(0);
+            transform: translateY(-20px) scale(0);
+        }
     }
 
-    50% {
-        background: rgba(255, 50, 0, 0.1);
-        -webkit-box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-        -webkit-transform: translateY(-20px) scale(0);
-        transform: translateY(-20px) scale(0);
+    @-webkit-keyframes in {
+        to {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
     }
-}
 
-@-webkit-keyframes in {
-    to {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
+    @keyframes in {
+        to {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
     }
-}
 
-@keyframes in {
-    to {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-.come {
-    animation-delay: 0.4s;
-    animation: coming 2s;
-    opacity: 1;
-}
-
-@keyframes coming {
-    from {
-        opacity: 0;
-    }
-    to {
+    .come {
+        animation-delay: 0.4s;
+        animation: coming 2s;
         opacity: 1;
     }
-}
 
-@-webkit-keyframes coming {
-    from {
-        opacity: 0;
+    @keyframes coming {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
-    to {
-        opacity: 1;
+
+    @-webkit-keyframes coming {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
-}
 
-.bg-bubbles {
-    position: absolute;
-    margin:0;
-    padding:0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.bg-bubbles li {
-    position: absolute;
-    list-style: none;
-    display: block;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.15);
-    bottom: -160px;
-    -webkit-animation: square 30s infinite;
-    animation: square 30s infinite;
-    -webkit-transition-timing-function: linear;
-    transition-timing-function: linear;
-}
-
-.bg-bubbles li:nth-child(1) {
-    left: 10%;
-}
-
-.bg-bubbles li:nth-child(2) {
-    left: 20%;
-    width: 80px;
-    height: 80px;
-    -webkit-animation-delay: 2s;
-    animation-delay: 2s;
-    -webkit-animation-duration: 17s;
-    animation-duration: 17s;
-}
-
-.bg-bubbles li:nth-child(3) {
-    left: 25%;
-    -webkit-animation-delay: 4s;
-    animation-delay: 4s;
-}
-
-.bg-bubbles li:nth-child(4) {
-    left: 40%;
-    width: 60px;
-    height: 60px;
-    -webkit-animation-duration: 22s;
-    animation-duration: 22s;
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-.bg-bubbles li:nth-child(5) {
-    left: 70%;
-}
-
-.bg-bubbles li:nth-child(6) {
-    left: 80%;
-    width: 120px;
-    height: 120px;
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.bg-bubbles li:nth-child(7) {
-    left: 32%;
-    width: 160px;
-    height: 160px;
-    -webkit-animation-delay: 7s;
-    animation-delay: 7s;
-}
-
-.bg-bubbles li:nth-child(8) {
-    left: 55%;
-    width: 20px;
-    height: 20px;
-    -webkit-animation-delay: 15s;
-    animation-delay: 15s;
-    -webkit-animation-duration: 40s;
-    animation-duration: 40s;
-}
-
-.bg-bubbles li:nth-child(9) {
-    left: 25%;
-    width: 10px;
-    height: 10px;
-    -webkit-animation-delay: 2s;
-    animation-delay: 2s;
-    -webkit-animation-duration: 40s;
-    animation-duration: 40s;
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.bg-bubbles li:nth-child(10) {
-    left: 90%;
-    width: 160px;
-    height: 160px;
-    -webkit-animation-delay: 11s;
-    animation-delay: 11s;
-}
-
-@-webkit-keyframes square {
-    0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    100% {
-        -webkit-transform: translateY(-900px) rotate(600deg);
-        transform: translateY(-900px) rotate(600deg);
-    }
-}
-
-@keyframes square {
-    0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    100% {
-        -webkit-transform: translateY(-900px) rotate(600deg);
-        transform: translateY(-900px) rotate(600deg);
-    }
-}
-
-.happy {
-    position: absolute;
-    opacity:0;
-    width: 230px;
-    height: 137px;
-    overflow: hidden;
-    left: 50%;
-    margin-left: -115px;
-    top: 30%;
-
-
-    animation-delay: 0s;
-}
-
-@keyframes happybirthdays {
-    0% {
+    .bg-bubbles {
         position: absolute;
-        top: 45%;
-        opacity: 0;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
-    70% {
+
+    .bg-bubbles li {
         position: absolute;
-        top: 45%;
-        opacity: 0;
+        list-style: none;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.15);
+        bottom: -160px;
+        -webkit-animation: square 30s infinite;
+        animation: square 30s infinite;
+        -webkit-transition-timing-function: linear;
+        transition-timing-function: linear;
     }
-    100% {
+
+    .bg-bubbles li:nth-child(1) {
+        left: 10%;
+    }
+
+    .bg-bubbles li:nth-child(2) {
+        left: 20%;
+        width: 80px;
+        height: 80px;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+        -webkit-animation-duration: 17s;
+        animation-duration: 17s;
+    }
+
+    .bg-bubbles li:nth-child(3) {
+        left: 25%;
+        -webkit-animation-delay: 4s;
+        animation-delay: 4s;
+    }
+
+    .bg-bubbles li:nth-child(4) {
+        left: 40%;
+        width: 60px;
+        height: 60px;
+        -webkit-animation-duration: 22s;
+        animation-duration: 22s;
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .bg-bubbles li:nth-child(5) {
+        left: 70%;
+    }
+
+    .bg-bubbles li:nth-child(6) {
+        left: 80%;
+        width: 120px;
+        height: 120px;
+        -webkit-animation-delay: 3s;
+        animation-delay: 3s;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .bg-bubbles li:nth-child(7) {
+        left: 32%;
+        width: 160px;
+        height: 160px;
+        -webkit-animation-delay: 7s;
+        animation-delay: 7s;
+    }
+
+    .bg-bubbles li:nth-child(8) {
+        left: 55%;
+        width: 20px;
+        height: 20px;
+        -webkit-animation-delay: 15s;
+        animation-delay: 15s;
+        -webkit-animation-duration: 40s;
+        animation-duration: 40s;
+    }
+
+    .bg-bubbles li:nth-child(9) {
+        left: 25%;
+        width: 10px;
+        height: 10px;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+        -webkit-animation-duration: 40s;
+        animation-duration: 40s;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .bg-bubbles li:nth-child(10) {
+        left: 90%;
+        width: 160px;
+        height: 160px;
+        -webkit-animation-delay: 11s;
+        animation-delay: 11s;
+    }
+
+    @-webkit-keyframes square {
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-900px) rotate(600deg);
+            transform: translateY(-900px) rotate(600deg);
+        }
+    }
+
+    @keyframes square {
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-900px) rotate(600deg);
+            transform: translateY(-900px) rotate(600deg);
+        }
+    }
+
+    .happy {
         position: absolute;
-        top: 49%;
-        opacity: 1;
-    }
-}
+        opacity: 0;
+        width: 230px;
+        height: 137px;
+        overflow: hidden;
+        left: 50%;
+        margin-left: -115px;
+        top: 30%;
 
-@-webkit-keyframes happybirthdays {
-    0% {
+
+        animation-delay: 0s;
+    }
+
+    @keyframes happybirthdays {
+        0% {
+            position: absolute;
+            top: 45%;
+            opacity: 0;
+        }
+
+        70% {
+            position: absolute;
+            top: 45%;
+            opacity: 0;
+        }
+
+        100% {
+            position: absolute;
+            top: 49%;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes happybirthdays {
+        0% {
+            position: absolute;
+            top: 45%;
+            opacity: 0;
+        }
+
+        70% {
+            position: absolute;
+            top: 45%;
+            opacity: 0;
+        }
+
+        100% {
+            position: absolute;
+            top: 49%;
+            opacity: 1;
+        }
+    }
+
+    .button-style1,
+    .button-style2 {
         position: absolute;
-        top: 45%;
-        opacity: 0;
+        top: 40%;
+        opacity: 1;
+        z-index: 100;
     }
-    70% {
+
+    .button-style1 {
         position: absolute;
-        top: 45%;
+        top: 50%;
+        left: 50%;
+        margin-left: -87px;
         opacity: 0;
     }
-    100% {
+
+    .button-style2 {
         position: absolute;
-        top: 49%;
-        opacity: 1;
-    }
-}
-
-.button-style1, .button-style2 {
-    position: absolute;
-    top: 40%;
-    opacity: 1;
-    z-index: 100;
-}
-
-.button-style1 {
-	position:absolute;
-	top:50%;
-    left: 50%;
-    margin-left:-87px;
-    opacity:0;
-}
-.button-style2 {
-	position:absolute;
-    top:60%;
-    margin-left:-87px;
-    left: 50%;
-    opacity:0;
-
-}
-.name{
-    font-weight: bold;
-    position: absolute;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    top: -100px;
-    opacity: 0;
-    font-size: 32px;
-    color: #fff;
-}
-@keyframes btn1 {
-    0% {
+        top: 60%;
+        margin-left: -87px;
+        left: 50%;
         opacity: 0;
-        top:60%;
+
     }
-    70% {
+
+    .name {
+        font-weight: bold;
+        position: absolute;
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+        top: -100px;
         opacity: 0;
-        top:60%;
+        font-size: 32px;
+        color: #fff;
     }
-    100% {
-        opacity: 1;
-        top:70%;
+
+    @keyframes btn1 {
+        0% {
+            opacity: 0;
+            top: 60%;
+        }
+
+        70% {
+            opacity: 0;
+            top: 60%;
+        }
+
+        100% {
+            opacity: 1;
+            top: 70%;
+        }
     }
-}
 
-@-webkit-keyframes btn1 {
-    0% {
-        opacity: 0;
-        top:60%;
+    @-webkit-keyframes btn1 {
+        0% {
+            opacity: 0;
+            top: 60%;
+        }
+
+        70% {
+            opacity: 0;
+            top: 60%;
+        }
+
+        100% {
+            opacity: 1;
+            top: 70%;
+        }
     }
-    70% {
-        opacity: 0;
-        top:60%;
+
+    @keyframes btn2 {
+        0% {
+            opacity: 0;
+            top: 60%;
+        }
+
+        70% {
+            opacity: 0;
+            top: 70%;
+        }
+
+        100% {
+            opacity: 1;
+            top: 85%;
+        }
     }
-    100% {
-        opacity: 1;
-        top:70%;
+
+    @-webkit-keyframes btn2 {
+        0% {
+            opacity: 0;
+            top: 60%;
+        }
+
+        70% {
+            opacity: 0;
+            top: 70%;
+        }
+
+        100% {
+            opacity: 1;
+            top: 85%;
+        }
     }
-}
 
-@keyframes btn2 {
-    0% {
-        opacity: 0;
-        top:60%;
+    .lk1,
+    .lk2 {
+        text-decoration: none;
+        font-family: Microsoft YaHei;
+        color: #fff;
+        transition: all 0.5s;
     }
-    70% {
-        opacity: 0;
-        top:70%;
+
+    .link1,
+    .link2 {
+        width: 170px;
+        height: 60px;
+        border: 2px solid #fff;
+        -webkit-border: 1px solid #fff;
+        border-radius: 30px;
+        font-size: 23px;
+        text-align: center;
+        background: #ee9ca7;
+        transition: all 0.8s;
     }
-    100% {
-        opacity: 1;
-        top:85%;
+
+    .link2 {
+        cursor: not-allowed;
     }
-}
 
-@-webkit-keyframes btn2 {
-    0% {
-        opacity: 0;
-        top:60%;
+    .bt1,
+    .bt2 {
+        position: relative;
+        top: 22%;
+        vertical-align: middle;
     }
-    70% {
-        opacity: 0;
-        top:70%;
+
+    a.lk1:hover {
+        color: #ee9ca7;
+        transition: all 0.5s;
     }
-    100% {
-        opacity: 1;
-        top:85%;
+
+    .link1:hover {
+        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0, 2);
+        border: 2px solid #BBB;
+        transition: all 0.8s;
     }
-}
 
-.lk1, .lk2 {
-    text-decoration: none;
-    font-family: Microsoft YaHei;
-    color: #fff;
-    transition: all 0.5s;
-}
+    a.lk2:hover {
+        color: #ee9ca7;
+        transition: all 0.5s;
+    }
 
-.link1, .link2 {
-    width: 170px;
-    height: 60px;
-    border: 2px solid #fff;
-    -webkit-border: 1px solid #fff;
-    border-radius: 30px;
-    font-size: 23px;
-    text-align: center;
-    background: #ee9ca7;
-    transition: all 0.8s;
-}
-
-.link2 {
-    cursor: not-allowed;
-}
-
-.bt1, .bt2 {
-    position: relative;
-    top: 22%;
-    vertical-align: middle;
-}
-
-a.lk1:hover {
-    color: #ee9ca7;
-    transition: all 0.5s;
-}
-
-.link1:hover {
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0, 2);
-    border: 2px solid #BBB;
-    transition: all 0.8s;
-}
-
-a.lk2:hover {
-    color: #ee9ca7;
-    transition: all 0.5s;
-}
-
-.link2:hover {
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0, 2);
-    border: 2px solid #BBB;
-    transition: all 0.8s;
-}
+    .link2:hover {
+        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0, 2);
+        border: 2px solid #BBB;
+        transition: all 0.8s;
+    }
 </style>
 <!-- 计时器 css-->
 <style>
-.title {background-color:#fff; text-align:center; width:100%; position:fixed; top:0; left:0; padding:5px 0; z-index:99999;}
-.title a {color:#FFF; text-decoration:none; font-size:16px; font-weight:bolder; line-height:24px;}
-#wrapper {width:100%; margin:54px auto;display: flex;align-items: center;justify-content: center;}
-.autosize {font-size:0; background: #fff; display: table;}
+    .title {
+        background-color: #fff;
+        text-align: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 5px 0;
+        z-index: 99999;
+    }
+
+    .title a {
+        color: #FFF;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bolder;
+        line-height: 24px;
+    }
+
+    #wrapper {
+        width: 100%;
+        margin: 54px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .autosize {
+        font-size: 0;
+        background: #fff;
+        display: table;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"> </script> 
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"> </script>
+
 <script src="https://cdn.bootcss.com/d3-transform/1.0.4/d3-transform.js"></script>
-  <!-- 生日原样式 js -->
-  <script>
+<!-- 生日原样式 js -->
+<script>
     $(function () {
-      setTimeout(function () {
-          $('.name').animate({
-              opacity:"1",
-              top:"15%"
-          },2000);
-  
-      },3000);
-      setTimeout(function () {
-          $('.happy').animate({
-              opacity:"1",
-              top:"15%"
-          },2000);
-  
-      },3000);
-      setTimeout(function () {
-          $('.button-style1').animate({
-              opacity:"1",
-              top:"70%"
-          },1500);
-          $('.button-style2').animate({
-              opacity:"1",
-              top:"85%"
-          },2000);
-      },6000);
-      // $(window).click(function(){
-      // 	$('audio')[0].play();
-      // });
-      // window.audio=$('audio')[0].play();
-  })
-  </script>
-  <!-- 计时器 js-->
-  <script>
-//   计算年龄
-  function calculateAge(birthYear, birthMonth ,birthDay,type) {
-  // 获取当前时间的年月日
-  var now = new Date();
-  var nowYear = now.getFullYear();
-  var nowMonth = now.getMonth(); // 注意：getMonth() 返回的是0-11的值
-  var nowDay = now.getDate();
-  var State = ''; 
-  // 获取出生日期的年月日
-  var birthDate = new Date(birthYear, birthMonth - 1, birthDay); // 注意：月份是从0开始的
- 
-  var age = nowYear - birthYear;
- 
-  // 如果出生月份大于当前月份，或者出生月份等于当前月份同时出生日期大于当前日期，则年龄减一
-  if (birthMonth - 1 > nowMonth || (birthMonth - 1 === nowMonth && birthDay > nowDay)) {
-    age--;
-    State = '未来'; //false
-  }else if(birthMonth - 1 === nowMonth && birthDay == nowDay) {
-    State = '当天'
-  }else{
-    State = '过去'; //true
-  }
+        setTimeout(function () {
+            $('.name').animate({
+                opacity: "1",
+                top: "15%"
+            }, 2000);
 
-  if(type == 'AGE'){
-  return age;
-  }else if(type == 'IF'){
-  return State;
-  }
-}
+        }, 3000);
+        setTimeout(function () {
+            $('.happy').animate({
+                opacity: "1",
+                top: "15%"
+            }, 2000);
 
-// 行走的时间
-  var uLED = function (conf) {
-    var r, led, timer, new_date, 
-    font1 = [" 000    0    000   000     0  00000   00  00000  000   000             ", "0   0  00   0   0 0   0   00  0      0        0 0   0 0   0            ", "0   0   0       0     0  0 0  0     0         0 0   0 0   0   0        ", "0   0   0    000   000  0  0  0000  0000     0   000   0000            ", "0   0   0   0         0 00000     0 0   0   0   0   0     0            ", "0   0   0   0     0   0    0  0   0 0   0  0    0   0    0    0        ", " 000   000  00000  000     0   000   000  0      000   00              "],
-    font2 = [" 000    0    000  00000    0  00000   00  00000  000   000             ", "0   0  00   0   0    0    00  0      0        0 0   0 0   0            ", "0  00   0       0   0    0 0  0000  0        0  0   0 0   0   0        ", "0 0 0   0     00     0  0  0      0 0000    0    000   0000            ", "00  0   0    0        0 00000     0 0   0   0   0   0     0            ", "0   0   0   0     0   0    0  0   0 0   0   0   0   0    0    0        ", " 000   000  00000  000     0   000   000    0    000   00              "],
-    font3 = ["00000     0 00000 00000 0   0 00000 00000 00000 00000 00000            ", "0   0     0     0     0 0   0 0     0         0 0   0 0   0   0        ", "0   0     0     0     0 0   0 0     0         0 0   0 0   0            ", "0   0     0 00000 00000 00000 00000 00000     0 00000 00000            ", "0   0     0 0         0     0     0 0   0     0 0   0     0            ", "0   0     0 0         0     0     0 0   0     0 0   0     0   0        ", "00000     0 00000 00000     0 00000 00000     0 00000 00000            "],
-    h_w = 5, m_d = 50, m_h = 50, m_m = 50, m_s = 50, time_rem, razd, dig = [], d, i, start, rand_num, num;
-    var type = conf.type == undefined ? "time" : conf.type, format, color = "#000", bgcolor = "#000", rounded = conf.rounded == undefined ? 1 : conf.rounded, pix_between = 1, hourformat = conf.hourformat == undefined ? 24 : conf.hourformat, n_length = conf.length == undefined ? 8 : conf.length;
-    if (conf.size < 30) {
-        h_w = conf.size;
-    }
-    else {
-        h_w = 12;
-    }
-    if (conf.color == "#ffb8b8") {
-        color = conf.color;
-        led = font1;
-        format = "ddd:hh:mm:ss";
-    }
-    else if (conf.color == "#af0") {
-        color = conf.color;
-        led = font1;
-    }
-    else if (conf.color == "#f0a") {
-        color = conf.color;
-        led = font2;
-        format = "hh:mm";
-    }
-    else if (conf.color == "#fa0") {
-        color = conf.color;
-        led = font3;
-        format = "hh:mm:ss";
-    }
-    if (conf.bgcolor == "#fff") {
-        bgcolor = conf.bgcolor;
-    }
-    else if (conf.bgcolor == "#101a10") {
-        bgcolor = conf.bgcolor;
-    }
-    else if (conf.bgcolor == "#222") {
-        bgcolor = conf.bgcolor;
-    }
-    function mtimer(timer, m) {
-        var n_t = timer.split(":");
-        for (var i = 0; i < n_t.length; i++) {
-            n_t[i] = parseInt(n_t[i], 10);
+        }, 3000);
+        setTimeout(function () {
+            $('.button-style1').animate({
+                opacity: "1",
+                top: "70%"
+            }, 1500);
+            $('.button-style2').animate({
+                opacity: "1",
+                top: "85%"
+            }, 2000);
+        }, 6000);
+        // $(window).click(function(){
+        // 	$('audio')[0].play();
+        // });
+        // window.audio=$('audio')[0].play();
+    })
+</script>
+<!-- 计时器 js-->
+<script>
+    //   计算年龄
+    function calculateAge(birthYear, birthMonth, birthDay, type) {
+        // 获取当前时间的年月日
+        var now = new Date();
+        var nowYear = now.getFullYear();
+        var nowMonth = now.getMonth(); // 注意：getMonth() 返回的是0-11的值
+        var nowDay = now.getDate();
+        var State = '';
+        // 获取出生日期的年月日
+        var birthDate = new Date(birthYear, birthMonth - 1, birthDay); // 注意：月份是从0开始的
+
+        var age = nowYear - birthYear;
+
+        // 如果出生月份大于当前月份，或者出生月份等于当前月份同时出生日期大于当前日期，则年龄减一
+        if (birthMonth - 1 > nowMonth || (birthMonth - 1 === nowMonth && birthDay > nowDay)) {
+            age--;
+            State = '未来'; //false
+        } else if (birthMonth - 1 === nowMonth && birthDay == nowDay) {
+            State = '当天'
+        } else {
+            State = '过去'; //true
         }
-        // n_t[0] = new Date().getFullYear();
-        return n_t;
+
+        if (type == 'AGE') {
+            return age;
+        } else if (type == 'IF') {
+            return State;
+        }
     }
-    start = new Date();
-    if (type == "random") {
-        r = Raphael(conf.id, n_length * 6 * (h_w + pix_between) - (h_w + 2 * pix_between), 7 * (h_w + pix_between) - pix_between);
-        for (i = 0; i < n_length * 6; i++) {
-            dig[i] = [];
-            for (var y = 0; y < 7; y++) {
-                dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
-                    "fill": bgcolor,
-                    "stroke": null
-                })
+
+    // 行走的时间
+    var uLED = function (conf) {
+        var r, led, timer, new_date,
+            font1 = [" 000    0    000   000     0  00000   00  00000  000   000             ", "0   0  00   0   0 0   0   00  0      0        0 0   0 0   0            ", "0   0   0       0     0  0 0  0     0         0 0   0 0   0   0        ", "0   0   0    000   000  0  0  0000  0000     0   000   0000            ", "0   0   0   0         0 00000     0 0   0   0   0   0     0            ", "0   0   0   0     0   0    0  0   0 0   0  0    0   0    0    0        ", " 000   000  00000  000     0   000   000  0      000   00              "],
+            font2 = [" 000    0    000  00000    0  00000   00  00000  000   000             ", "0   0  00   0   0    0    00  0      0        0 0   0 0   0            ", "0  00   0       0   0    0 0  0000  0        0  0   0 0   0   0        ", "0 0 0   0     00     0  0  0      0 0000    0    000   0000            ", "00  0   0    0        0 00000     0 0   0   0   0   0     0            ", "0   0   0   0     0   0    0  0   0 0   0   0   0   0    0    0        ", " 000   000  00000  000     0   000   000    0    000   00              "],
+            font3 = ["00000     0 00000 00000 0   0 00000 00000 00000 00000 00000            ", "0   0     0     0     0 0   0 0     0         0 0   0 0   0   0        ", "0   0     0     0     0 0   0 0     0         0 0   0 0   0            ", "0   0     0 00000 00000 00000 00000 00000     0 00000 00000            ", "0   0     0 0         0     0     0 0   0     0 0   0     0            ", "0   0     0 0         0     0     0 0   0     0 0   0     0   0        ", "00000     0 00000 00000     0 00000 00000     0 00000 00000            "],
+            h_w = 5, m_d = 50, m_h = 50, m_m = 50, m_s = 50, time_rem, razd, dig = [], d, i, start, rand_num, num;
+        var type = conf.type == undefined ? "time" : conf.type, format, color = "#000", bgcolor = "#000", rounded = conf.rounded == undefined ? 1 : conf.rounded, pix_between = 1, hourformat = conf.hourformat == undefined ? 24 : conf.hourformat, n_length = conf.length == undefined ? 8 : conf.length;
+        if (conf.size < 30) {
+            h_w = conf.size;
+        }
+        else {
+            h_w = 12;
+        }
+        if (conf.color == "#ffb8b8") {
+            color = conf.color;
+            led = font1;
+            format = "ddd:hh:mm:ss";
+        }
+        else if (conf.color == "#af0") {
+            color = conf.color;
+            led = font1;
+        }
+        else if (conf.color == "#f0a") {
+            color = conf.color;
+            led = font2;
+            format = "hh:mm";
+        }
+        else if (conf.color == "#fa0") {
+            color = conf.color;
+            led = font3;
+            format = "hh:mm:ss";
+        }
+        if (conf.bgcolor == "#fff") {
+            bgcolor = conf.bgcolor;
+        }
+        else if (conf.bgcolor == "#101a10") {
+            bgcolor = conf.bgcolor;
+        }
+        else if (conf.bgcolor == "#222") {
+            bgcolor = conf.bgcolor;
+        }
+        function mtimer(timer, m) {
+            var n_t = timer.split(":");
+            for (var i = 0; i < n_t.length; i++) {
+                n_t[i] = parseInt(n_t[i], 10);
             }
+            // n_t[0] = new Date().getFullYear();
+            return n_t;
         }
-        updateTime();
-    }
-    else {
-        r = Raphael(conf.id, format.length * 6 * (h_w + pix_between) - (h_w + 2 * pix_between), 7 * (h_w + pix_between) - pix_between)
-    }
-    if (type == "countdown") {
-        // n_t = mtimer(start.getFullYear() + 1 + ":1:1:0:0:00");
-        // if()
-        const stateval = calculateAge(2005,5,1,'IF');
-        let nowYear = '';
-        if(stateval == '过去'){  //true代表已经过去生日
-          nowYear = start.getFullYear() + 1;
-        }else if(stateval == '未来'){
-          nowYear = start.getFullYear();
-        }
-        n_t = mtimer(nowYear + ":5:1:0:0:00");
-        new_date = new Date(n_t[0], n_t[1] - 1, n_t[2], n_t[3], n_t[4]);
-        for (i = 0; i < 12 * 6; i++) {
-            dig[i] = [];
-            for (var y = 0; y < 7; y++) {
-                dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
-                    "fill": bgcolor,
-                    "stroke": null
-                })
-            }
-        }
-        updateTime();
-    }
-    if (type == "time") {
-        for (i = 0; i < ((format == "mm:ss" || format == "hh:mm") ? 5 : ((format == "hh" || format == "mm" || format == "ss") ? 2 : 8)) * 6; i++) {
-            dig[i] = [];
-            for (var y = 0; y < 7; y++) {
-                dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
-                    "fill": bgcolor,
-                    "stroke": null
-                })
-            }
-        }
-        updateTime();
-    }
-    function updateTime() {
-        d = new Date();
-        type == "countdown" ? updateLed1(d) : "";
-        type == "time" ? updateLed2(d) : "";
+        start = new Date();
         if (type == "random") {
-            updateLed0();
-            setTimeout(updateTime, 5000);
+            r = Raphael(conf.id, n_length * 6 * (h_w + pix_between) - (h_w + 2 * pix_between), 7 * (h_w + pix_between) - pix_between);
+            for (i = 0; i < n_length * 6; i++) {
+                dig[i] = [];
+                for (var y = 0; y < 7; y++) {
+                    dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
+                        "fill": bgcolor,
+                        "stroke": null
+                    })
+                }
+            }
+            updateTime();
         }
         else {
-            setTimeout(updateTime, 1000);
+            r = Raphael(conf.id, format.length * 6 * (h_w + pix_between) - (h_w + 2 * pix_between), 7 * (h_w + pix_between) - pix_between)
         }
-    }
-    function updateLed0() {
-        rand_num = ("0,9999999").split(",");
-        num = "" + parseInt(parseInt(rand_num[0]) + Math.random() * (parseInt(rand_num[1]) - parseInt(rand_num[0])));
-        while (String(num).length < n_length) {
-            num = "0" + num;
+        if (type == "countdown") {
+            // n_t = mtimer(start.getFullYear() + 1 + ":1:1:0:0:00");
+            // if()
+            const stateval = calculateAge(2005, 5, 1, 'IF');
+            let nowYear = '';
+            if (stateval == '过去') {  //true代表已经过去生日
+                nowYear = start.getFullYear() + 1;
+            } else if (stateval == '未来') {
+                nowYear = start.getFullYear();
+            }
+            n_t = mtimer(nowYear + ":5:1:0:0:00");
+            new_date = new Date(n_t[0], n_t[1] - 1, n_t[2], n_t[3], n_t[4]);
+            for (i = 0; i < 12 * 6; i++) {
+                dig[i] = [];
+                for (var y = 0; y < 7; y++) {
+                    dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
+                        "fill": bgcolor,
+                        "stroke": null
+                    })
+                }
+            }
+            updateTime();
         }
-        dig_to_led(num);
-    }
-    function updateLed1(d) {
-        time_rem = parseInt((new_date.getTime() - d.getTime()) / 1000) + 1;
-        m_d = parseInt(time_rem / 86400);
-        m_h = parseInt((time_rem - m_d * 86400) / 3600);
-        m_m = parseInt((time_rem - m_d * 86400 - m_h * 3600) / 60);
-        m_s = parseInt(time_rem - m_d * 86400 - m_h * 3600 - m_m * 60);
-        num = (m_d < 10 ? "00" : (m_d > 100 ? "" : "0")) + m_d + ":" + (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
-        if ((new_date.getTime() - d.getTime()) >= 0) {
-            dig_to_led(num);
+        if (type == "time") {
+            for (i = 0; i < ((format == "mm:ss" || format == "hh:mm") ? 5 : ((format == "hh" || format == "mm" || format == "ss") ? 2 : 8)) * 6; i++) {
+                dig[i] = [];
+                for (var y = 0; y < 7; y++) {
+                    dig[i][y] = r.rect(i * (h_w + pix_between), y * (h_w + pix_between), h_w, h_w, rounded).attr({
+                        "fill": bgcolor,
+                        "stroke": null
+                    })
+                }
+            }
+            updateTime();
         }
-        else {
-            dig_to_led("000:00:00:00");
-        }
-    }
-    var flash_dot = true;
-
-    function updateLed2(d) {
-        m_h = parseInt(d.getHours());
-        m_h = (hourformat == 12 ? (m_h > 12 ? m_h - 12 : m_h) : m_h);
-        m_m = parseInt(d.getMinutes());
-        m_s = parseInt(d.getSeconds());
-        if (format == "mm:ss") {
-            num = (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
-        }
-        else if (format == "hh:mm") {
-            if (flash_dot) {
-                num = (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m;
+        function updateTime() {
+            d = new Date();
+            type == "countdown" ? updateLed1(d) : "";
+            type == "time" ? updateLed2(d) : "";
+            if (type == "random") {
+                updateLed0();
+                setTimeout(updateTime, 5000);
             }
             else {
-                num = (m_h < 10 ? "0" : "") + m_h + " " + (m_m < 10 ? "0" : "") + m_m;
+                setTimeout(updateTime, 1000);
             }
-            flash_dot = !flash_dot;
         }
-        else if (format == "hh") {
-            num = (m_h < 10 ? "0" : "") + m_h;
+        function updateLed0() {
+            rand_num = ("0,9999999").split(",");
+            num = "" + parseInt(parseInt(rand_num[0]) + Math.random() * (parseInt(rand_num[1]) - parseInt(rand_num[0])));
+            while (String(num).length < n_length) {
+                num = "0" + num;
+            }
+            dig_to_led(num);
         }
-        else if (format == "mm") {
-            num = (m_m < 10 ? "0" : "") + m_m;
+        function updateLed1(d) {
+            time_rem = parseInt((new_date.getTime() - d.getTime()) / 1000) + 1;
+            m_d = parseInt(time_rem / 86400);
+            m_h = parseInt((time_rem - m_d * 86400) / 3600);
+            m_m = parseInt((time_rem - m_d * 86400 - m_h * 3600) / 60);
+            m_s = parseInt(time_rem - m_d * 86400 - m_h * 3600 - m_m * 60);
+            num = (m_d < 10 ? "00" : (m_d > 100 ? "" : "0")) + m_d + ":" + (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
+            if ((new_date.getTime() - d.getTime()) >= 0) {
+                dig_to_led(num);
+            }
+            else {
+                dig_to_led("000:00:00:00");
+            }
         }
-        else if (format == "ss") {
-            num = (m_s < 10 ? "0" : "") + m_s;
+        var flash_dot = true;
+
+        function updateLed2(d) {
+            m_h = parseInt(d.getHours());
+            m_h = (hourformat == 12 ? (m_h > 12 ? m_h - 12 : m_h) : m_h);
+            m_m = parseInt(d.getMinutes());
+            m_s = parseInt(d.getSeconds());
+            if (format == "mm:ss") {
+                num = (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s;
+            }
+            else if (format == "hh:mm") {
+                if (flash_dot) {
+                    num = (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m;
+                }
+                else {
+                    num = (m_h < 10 ? "0" : "") + m_h + " " + (m_m < 10 ? "0" : "") + m_m;
+                }
+                flash_dot = !flash_dot;
+            }
+            else if (format == "hh") {
+                num = (m_h < 10 ? "0" : "") + m_h;
+            }
+            else if (format == "mm") {
+                num = (m_m < 10 ? "0" : "") + m_m;
+            }
+            else if (format == "ss") {
+                num = (m_s < 10 ? "0" : "") + m_s;
+            }
+            else {
+                num = (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s
+            }
+            dig_to_led(num);
         }
-        else {
-            num = (m_h < 10 ? "0" : "") + m_h + ":" + (m_m < 10 ? "0" : "") + m_m + ":" + (m_s < 10 ? "0" : "") + m_s
-        }
-        dig_to_led(num);
-    }
-    function dig_to_led(num) {
-        start = new Date();
-        razd = 0;
-        for (var l = 0; l < num.length; l++) {
-            num.charAt(l) == ":" ? razd = 10 : (num.charAt(l) == " " ? razd = 11 : razd = num.charAt(l));
-            for (i = 0; i < 6; i++) {
-                for (var y = 0; y < 7; y++) {
-                    if (led[y].charAt(razd * 6 + i) == "0" && dig[l * 6 + i][y].attrs.fill == bgcolor) {
-                        dig[l * 6 + i][y].animate({
-                            "fill": color
-                        }, 300);
-                    }
-                    else if (led[y].charAt(razd * 6 + i) == " " && dig[l * 6 + i][y].attrs.fill != bgcolor) {
-                        dig[l * 6 + i][y].animate({
-                            "fill": bgcolor
-                        }, 300);
+        function dig_to_led(num) {
+            start = new Date();
+            razd = 0;
+            for (var l = 0; l < num.length; l++) {
+                num.charAt(l) == ":" ? razd = 10 : (num.charAt(l) == " " ? razd = 11 : razd = num.charAt(l));
+                for (i = 0; i < 6; i++) {
+                    for (var y = 0; y < 7; y++) {
+                        if (led[y].charAt(razd * 6 + i) == "0" && dig[l * 6 + i][y].attrs.fill == bgcolor) {
+                            dig[l * 6 + i][y].animate({
+                                "fill": color
+                            }, 300);
+                        }
+                        else if (led[y].charAt(razd * 6 + i) == " " && dig[l * 6 + i][y].attrs.fill != bgcolor) {
+                            dig[l * 6 + i][y].animate({
+                                "fill": bgcolor
+                            }, 300);
+                        }
                     }
                 }
             }
         }
-    }
-};
-  </script>
+    };
+</script>
+
 <body>
 
-<div class="bg">
-    <div class="velas">
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-        <div class="fuego"></div>
-    </div>
-    <svg id="cake" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500" enable-background="new 0 0 200 500" xml:space="preserve">
-    <path fill="#a88679" d="M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+    <div class="bg">
+        <div class="velas">
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+            <div class="fuego"></div>
+        </div>
+        <svg id="cake" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500"
+            enable-background="new 0 0 200 500" xml:space="preserve">
+            <path fill="#a88679" d="M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z">
-        <animate id="bizcocho_3" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1" begin="relleno_2.end" dur="0.3s" fill="freeze" values="
+                <animate id="bizcocho_3" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1"
+                    begin="relleno_2.end" dur="0.3s" fill="freeze" values="
                           M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z
                           ;
@@ -804,11 +863,12 @@ a.lk2:hover {
                           M173.667,427.569c-49.795,0-101.101,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c46.385,0,97.539,0,147.334,0C177.668,411.567,177.667,427.569,173.667,427.569z
                           " />
-    </path>
-    <path fill="#8b6a60" d="M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+            </path>
+            <path fill="#8b6a60" d="M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
 		c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.144,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
 		L100-178.521z">
-        <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_2.end" dur="0.5s" fill="freeze" values="
+                <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1"
+                    begin="bizcocho_2.end" dur="0.5s" fill="freeze" values="
                           M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
 		c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.144,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
 		L100-178.521z
@@ -827,10 +887,11 @@ a.lk2:hover {
 		c19.143,0,20.39-3.797,26.459,0c3,1.877,0,7.823,0,7.823c-2.412,2.258-58.328,0-73.667,0l0,0c-1.858,0-67.187,0-73.667,0
 		c0,0-4.125-4.983,0-7.823c5.201-3.58,16.085,0,23.725,0c8.841,0,20.762,0,20.762,0c3.686,0,8.597,0,19.511,0H102.242z
                           " />
-    </path>
-    <path fill="#a88679" d="M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
+            </path>
+            <path fill="#a88679" d="M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z">
-        <animate id="bizcocho_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0.25 0 0.58 1" begin="relleno_1.end" dur="0.5s" fill="freeze" values="
+                <animate id="bizcocho_2" attributeName="d" calcMode="spline"
+                    keySplines="0 0 1 1; 0 0 1 1; 0.25 0 0.58 1" begin="relleno_1.end" dur="0.5s" fill="freeze" values="
                           M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z
                           ;
@@ -843,11 +904,12 @@ a.lk2:hover {
                           M173.667,451.394c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c44.697,0,96.586,0,147.334,0C177.667,435.392,177.668,451.394,173.667,451.394z
                           " />
-    </path>
-    <path fill="#8b6a60" d="M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
+            </path>
+            <path fill="#8b6a60" d="M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
 		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
 		C98.411-75.883,101.368-75.592,101.368-73.685z">
-        <animate id="relleno_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.6 1" begin="bizcocho_1.end" dur="0.5s" fill="freeze" values="
+                <animate id="relleno_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.6 1"
+                    begin="bizcocho_1.end" dur="0.5s" fill="freeze" values="
                           M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
 		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
 		C98.411-75.883,101.368-75.592,101.368-73.685z
@@ -864,10 +926,12 @@ a.lk2:hover {
 		c-14.48,0-17.884,0-30.163,0c-2.087,0-2.068,0-3.915,0c-13.333,0-8.963,0-23.088,0c-11.668,0-34.99-0.294-48.412,1.831
 		c-4.109,0.65-3.01-10.006,0-10.006C37.129,451.394,149.379,451.394,173.667,451.394z
                           " />
-    </path>
-    <path fill="#a88679" d="M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+            </path>
+            <path fill="#a88679" d="M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
 		C177.668,5.569,177.667,21.571,173.667,21.571z">
-        <animate id="bizcocho_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="2s" dur="0.8s" fill="freeze" values="
+                <animate id="bizcocho_1" attributeName="d" calcMode="spline"
+                    keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="2s" dur="0.8s"
+                    fill="freeze" values="
                           M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
 		C177.668,5.569,177.667,21.571,173.667,21.571z
                           ;
@@ -889,12 +953,14 @@ a.lk2:hover {
                           M173.667,475.571c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002c43.566,0,97.96,0,147.334,0
 		C177.667,459.569,177.666,475.571,173.667,475.571z
                           " />
-    </path>
-    <path fill="#fefae9" d="M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+            </path>
+            <path fill="#fefae9" d="M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
 	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
 	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
 	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z">
-        <animate id="crema" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end" dur="2s" fill="freeze" values="
+                <animate id="crema" attributeName="d" calcMode="spline"
+                    keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end"
+                    dur="2s" fill="freeze" values="
                           M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
 	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
 	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
@@ -935,14 +1001,15 @@ a.lk2:hover {
 	c16.642-0.61,32.903,1.125,46.213,1.5c12.438,0.351,35.058-5.579,31.863,6.451c-5.532,20.833,1.25,28.216-4.409,27.883
 	c-7.606-0.447-6.058-37.895-20.62-23.333c-10.167,10.166-15.972-0.747-25,12C119.547,443.568,121.798,416.515,111.547,415.233z
                           " />
-    </path>
-    <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
-</svg>
-<div class="name" style="z-index: 100;">18岁生日快乐</div>
-<div class="happy" style="z-index: 100;">
-    <img src="HappyBirthday.png">
-</div>
-<!-- <div class="button-style1">
+            </path>
+            <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
+        </svg>
+        <div class="name" style="z-index: 100;"><span class="timeh2"
+                style="color: #C5B4E5;font-size: 42px;font-weight: bold;"></span>岁生日快乐</div>
+        <div class="happy" style="z-index: 100;">
+            <img src="HappyBirthday.png">
+        </div>
+        <!-- <div class="button-style1">
     <a class="lk1">
         <div class="link1">
             <div class="bt1">
@@ -951,7 +1018,7 @@ a.lk2:hover {
         </div>
     </a>
 </div> -->
-<!-- <div class="button-style2">
+        <!-- <div class="button-style2">
 	<a href="javascript:;" class="lk1">
         <div class="link2">
             <div class="bt1" id="dislike">
@@ -960,106 +1027,110 @@ a.lk2:hover {
         </div>
 	</a>
 </div> -->
-<!-- 计时器 -->
-<div class="Time">
-<div id="wrapper">
-    <div id="Noday">
-    <h2 style="color: #fff;">距离你的<span id="timeh2" style="color: #C5B4E5;font-size: 42px;font-weight: bold;"></span>岁生日还有：</h2>
-        <div style="display: flex;align-items: center;justify-content: center;">
-          <div id="led0" class="autosize" style="border: 10px solid #fff; border-radius: 20px;"></div>
+        <!-- 计时器 -->
+        <div class="Time">
+            <div id="wrapper">
+                <div id="Noday">
+                    <h2 style="color: #fff;">距离你的<span class="timeh2"
+                            style="color: #C5B4E5;font-size: 42px;font-weight: bold;"></span>岁生日还有：</h2>
+                    <div style="display: flex;align-items: center;justify-content: center;">
+                        <div id="led0" class="autosize" style="border: 10px solid #fff; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                <div id="Yesday" style="display: none;">
+                    <h2 style="color: #fff;">今天是你的生日，玩的开心！</h2>
+                </div>
+            </div>
         </div>
-      </div>
-      <div id="Yesday" style="display: none;">
-      <h2 style="color: #fff;">今天是你的生日，玩的开心！</h2>
-      </div>
-</div>
-</div>
-          <script type="text/javascript">
+        <script type="text/javascript">
             var comSize = 0;
             var uaWidth = window.innerWidth;
-            const Yage = calculateAge(2005,5,1,'AGE');
-            const Stateval = calculateAge(2005,5,1,'IF');
+            const Yage = calculateAge(2005, 5, 1, 'AGE');
+            const Stateval = calculateAge(2005, 5, 1, 'IF');
             var YesH2 = document.getElementById("Yesday");
             var NoH2 = document.getElementById("Noday");
-            var titleTime = document.getElementById("timeh2");
-            if(Stateval == '当天'){
-              YesH2.style.display = 'block'
-              NoH2.style.display = 'none'
-            }else{
-              YesH2.style.display = 'none'
-              NoH2.style.display = 'block'
+            var titleTime = document.getElementsByClassName("timeh2");
+            if (Stateval == '当天') {
+                YesH2.style.display = 'block'
+                NoH2.style.display = 'none'
+            } else {
+                YesH2.style.display = 'none'
+                NoH2.style.display = 'block'
             }
-            titleTime.innerHTML = Yage
-            if(uaWidth > 480){
-              comSize = 5;
-            }else{
-              comSize = 2;
+            console.log(titleTime);
+            titleTime[0].innerHTML = Yage;
+            titleTime[1].innerHTML = Yage;
+            if (uaWidth > 480) {
+                comSize = 5;
+            } else {
+                comSize = 2;
             }
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var l0 = new uLED({
-                    id : "led0",
-                    type : "countdown",
-                    format : "ddd:hh:mm:ss",
-                    color : "#ffb8b8",
-                    bgcolor : "#fff",
-                    size : comSize,
-                    rounded : 1,
+                    id: "led0",
+                    type: "countdown",
+                    format: "ddd:hh:mm:ss",
+                    color: "#ffb8b8",
+                    bgcolor: "#fff",
+                    size: comSize,
+                    rounded: 1,
                 });
             });
-        </script> 
-<ul class="bg-bubbles">
-    <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-      <li>
-        <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
-      </li>
-</ul>
+        </script>
+        <ul class="bg-bubbles">
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+            <li>
+                <!-- <img src="./img/timg.gif" style="width: 100%; height: 100%" /> -->
+            </li>
+        </ul>
 
-<div class="bubbles">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="addphoto"></div>
-</div>
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="addphoto"></div>
+        </div>
 
-<div class="photoshow" style="z-index: 200;">
-    <img class="imgview" />
-    <p></p>
-</div>
+        <div class="photoshow" style="z-index: 200;">
+            <img class="imgview" />
+            <p></p>
+        </div>
 
-<!-- 生日快乐 -->
-<audio src="2.mp3" autoplay="true" loop="true"></audio>
+        <!-- 生日快乐 -->
+        <audio src="2.mp3" autoplay="true" loop="true"></audio>
 </body>
+
 </html>
